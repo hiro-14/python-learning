@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>DAY13 Web × Python</title>
+</head>
+<body>
+
+  <input id="nameInput" placeholder="名前を入力">
+  <button id="btn">送信</button>
+  <p id="result"></p>
+
+  <script>
+    const btn = document.getElementById("btn");
+    const result = document.getElementById("result");
+    btn.addEventListener("click", () => {
+      const name = document.getElementById("nameInput").value;
+
+      fetch (`http://127.0.0.1:8000/hello?name=${name}`)//?~=${}はクエリ
+       .then(responce => responce.json())   //HTTPレスポンス全体からjson文字列を取り出してjsonオブジェクトに変換(そのままでは使えない)
+       .then(data => {
+        result.textContent = data.message;
+       })
+       .catch(error => {
+        console.error("サーバー接続に失敗しました：", error);
+       });
+    }); //『；』は基本書かなくても動く
+
+  </script>
+</body>
+</html>
