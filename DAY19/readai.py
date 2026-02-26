@@ -2,7 +2,7 @@ import pickle
 
 # モデル読み込み
 with open("model.pkl", "rb") as f:
-  loaded_model = pickel.load(f)
+  loaded_model = pickle.load(f)
 
 print("モデル読み込み完了")
 
